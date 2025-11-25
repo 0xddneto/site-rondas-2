@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RONDESP Recôncavo - Companhia Independente de Policiamento Tático</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2c1810, #3d241a);
+            color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(to right, #1a0e08, #2c1810);
+            padding: 30px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            border-bottom: 3px solid #8b4513;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .brasao {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+        }
+
+        h1 {
+            color: #d4a574;
+            font-size: 2.8rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            font-weight: bold;
+        }
+
+        .subtitle {
+            color: #c19a6b;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .column {
+            background: linear-gradient(135deg, #3d241a, #2c1810);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid #8b4513;
+            transition: transform 0.3s ease;
+        }
+
+        .column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+        }
+
+        .column h2 {
+            color: #d4a574;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #8b4513;
+            padding-bottom: 10px;
+        }
+
+        .column p, .column li {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #e5d4b1;
+            font-size: 1.05rem;
+        }
+
+        .column ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .column li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+        }
+
+        .column li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+            font-weight: bold;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #2c1810, #1a0e08);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            border: 1px solid #8b4513;
+        }
+
+        .stats h3 {
+            color: #d4a574;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            background: rgba(139, 69, 19, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #8b4513;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d4a574;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #c19a6b;
+            margin-top: 5px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            color: #fff;
+            padding: 20px 50px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            border: 2px solid #d4a574;
+            animation: pulse 2s infinite;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            background: linear-gradient(135deg, #a0522d, #8b4513);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        footer {
+            background: linear-gradient(to right, #1a0e08, #2c1810);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+            border-top: 3px solid #8b4513;
+        }
+
+        footer p {
+            color: #c19a6b;
+            font-size: 1.1rem;
+        }
+
+        .motto {
+            background: linear-gradient(135deg, #1a0e08, #2c1810);
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 15px;
+            border: 2px solid #8b4513;
+        }
+
+        .motto h3 {
+            color: #d4a574;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .motto p {
+            color: #e5d4b1;
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="photo_2025-11-25_18-45-14.jpg" alt="Brasão RONDESP Recôncavo" class="brasao">
+            <div>
+                <h1>RONDESP RECÔNCAVO</h1>
+                <p class="subtitle">Companhia Independente de Policiamento Tático - Recôncavo</p>
+            </div>
+            <img src="photo_2025-11-25_18-45-14.jpg" alt="Brasão RONDESP Recôncavo" class="brasao">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="motto">
+            <h3>SERVIR E PROTEGER</h3>
+            <p>"Garantindo a segurança e a ordem pública no Recôncavo Baiano"</p>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <h2>📜 Fundação e História</h2>
+                <p>A RONDESP Recôncavo foi criada em <strong>2023</strong> como parte fundamental do Comando Regional do Recôncavo, representando um marco histórico na segurança pública da região.</p>
+                <p>Em <strong>30 de julho de 2024</strong>, foi inaugurada a sede da Companhia Independente de Policiamento Tático - Recôncavo (CIPT-R) em Santo Antônio de Jesus pelo Coronel Paulo Coutinho, Comandante-Geral da PMBA.</p>
+                <p>Sob o comando do <strong>Major Cleiton</strong>, a unidade se tornou referência estadual em menos de dois anos de operação, sendo reconhecida como a unidade da PM que mais apreende armas de fogo em toda a Bahia.</p>
+                <ul>
+                    <li>Mais de 250 armas apreendidas em menos de 2 anos</li>
+                    <li>Sede estratégica em Santo Antônio de Jesus</li>
+                    <li>Cobertura de todo o território do Recôncavo</li>
+                    <li>Integração com 14º BPM e outras unidades</li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h2>⚖️ Princípios Fundamentais</h2>
+                <ul>
+                    <li><strong>Inteligência:</strong> Atuação baseada em análise estratégica e informações precisas</li>
+                    <li><strong>Integração:</strong> Trabalho conjunto com Polícia Civil, Poder Judiciário e outras forças</li>
+                    <li><strong>Excelência:</strong> Busca constante pela qualificação e aperfeiçoamento da tropa</li>
+                    <li><strong>Respeito:</strong> Compromisso com os direitos humanos e a dignidade da pessoa</li>
+                    <li><strong>Coragem:</strong> Enfrentamento decidido ao crime organizado</li>
+                    <li><strong>Lealdade:</strong> Fidelidade aos valores institucionais e à sociedade</li>
+                    <li><strong>Disciplina:</strong> Rigor no cumprimento das normas e protocolos</li>
+                </ul>
+                <p>A unidade atua com foco no combate ao crime organizado e no reforço em áreas de maior vulnerabilidade social.</p>
+            </div>
+
+            <div class="column">
+                <h2>🎯 Valores e Missão</h2>
+                <p><strong>Missão:</strong> Promover a segurança pública através do policiamento tático especializado, garantindo a paz social e a proteção da população do Recôncavo Baiano.</p>
+                <p><strong>Visão:</strong> Ser reconhecida como força policial de excelência, referência em operações táticas e no combate ao crime organizado.</p>
+                <p><strong>Valores Institucionais:</strong></p>
+                <ul>
+                    <li>Hierarquia e Disciplina</li>
+                    <li>Ética e Transparência</li>
+                    <li>Profissionalismo e Técnica</li>
+                    <li>Compromisso Social</li>
+                    <li>Valorização da Vida</li>
+                    <li>Trabalho em Equipe</li>
+                    <li>Inovação e Modernização</li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h2>🛡️ Estrutura Operacional</h2>
+                <p>A RONDESP Recôncavo conta com estrutura moderna e equipamentos de última geração:</p>
+                <ul>
+                    <li>Viaturas táticas semiblinadas</li>
+                    <li>Armamento de alto poder de fogo</li>
+                    <li>Equipamentos de proteção individual</li>
+                    <li>Sistema de comunicação integrado</li>
+                    <li>Centro de inteligência e análise</li>
+                </ul>
+                <p>A unidade trabalha em parceria com:</p>
+                <ul>
+                    <li>14º Batalhão de Polícia Militar</li>
+                    <li>20ª CIPM de Santo Amaro</li>
+                    <li>27ª CIPM de Cruz das Almas</li>
+                    <li>99ª CIPM de Amargosa</li>
+                    <li>33ª CIPM de Valença</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="stats">
+            <h3>RESULTADOS OPERACIONAIS</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">Armas Apreendidas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1º</div>
+                    <div class="stat-label">Lugar em Apreensões no Estado</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">23</div>
+                    <div class="stat-label">Municípios Atendidos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24h</div>
+                    <div class="stat-label">Prontidão Operacional</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="pelotao3.html" class="btn">CLIQUE PARA VER O MELHOR PELOTÃO</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>RONDESP RECÔNCAVO - PMBA | Santo Antônio de Jesus - Bahia - Brasil</p>
+        <p>© 2024 - Servindo com honra e dedicação ao povo baiano</p>
+    </footer>
+</body>
+</html>

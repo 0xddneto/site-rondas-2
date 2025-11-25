@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Pelotão - RONDESP Recôncavo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2c1810, #3d241a);
+            color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(to right, #1a0e08, #2c1810);
+            padding: 40px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            border-bottom: 5px solid #8b4513;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(139, 69, 19, 0.1) 10px,
+                rgba(139, 69, 19, 0.1) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .brasao-header {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin: 0 auto 20px;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.5));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: #ffd700;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 4px 4px 8px rgba(0,0,0,0.8), 0 0 10px #ffd700; }
+            to { text-shadow: 4px 4px 8px rgba(0,0,0,0.8), 0 0 20px #ffd700, 0 0 30px #ffd700; }
+        }
+
+        .subtitle {
+            color: #d4a574;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .commander-section {
+            background: linear-gradient(135deg, #3d241a, #2c1810);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            border: 3px solid #ffd700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .commander-section::before {
+            content: "★";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            color: #ffd700;
+            opacity: 0.3;
+        }
+
+        .commander-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .commander-image {
+            width: 400px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 5px solid #ffd700;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .commander-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .commander-info h2 {
+            color: #ffd700;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .commander-info h3 {
+            color: #d4a574;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .commander-info p {
+            color: #e5d4b1;
+            line-height: 1.8;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .excellence-badge {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #1a0e08;
+            padding: 15px 30px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .gallery {
+            margin: 60px 0;
+        }
+
+        .gallery h2 {
+            color: #ffd700;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 3px solid #8b4513;
+            transition: all 0.3s ease;
+            background: #1a0e08;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            border-color: #ffd700;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: #ffd700;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover .photo-caption {
+            transform: translateY(0);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1a0e08, #2c1810);
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #ffd700;
+            position: relative;
+        }
+
+        .hero-section::before,
+        .hero-section::after {
+            content: "⚔";
+            position: absolute;
+            font-size: 4rem;
+            color: rgba(255, 215, 0, 0.1);
+        }
+
+        .hero-section::before {
+            top: 20px;
+            left: 20px;
+        }
+
+        .hero-section::after {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .hero-section h3 {
+            color: #ffd700;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-section p {
+            color: #e5d4b1;
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+
+        .team-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, #2c1810, #3d241a);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #8b4513;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.2);
+        }
+
+        .value-card h4 {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .value-card p {
+            color: #e5d4b1;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: linear-gradient(to right, #1a0e08, #2c1810);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+            border-top: 5px solid #ffd700;
+        }
+
+        footer p {
+            color: #d4a574;
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 30px;
+            margin: 40px auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid #d4a574;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .commander-content { flex-direction: column; }
+            .commander-image { width: 100%; height: auto; }
+            .photo-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="photo_2025-11-25_18-45-14.jpg" alt="Brasão RONDESP Recôncavo" class="brasao-header">
+            <h1>MERCADO LIVRE 3º PELOTÃO</h1>
+            <p class="subtitle">SEMPRE SERÁ O MELHOR</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="commander-section">
+            <div class="commander-content">
+                <img src="photo_1_2025-11-25_18-34-22.jpg" alt="Tenente Maabreh" class="commander-image">
+                <div class="commander-info">
+                    <h2>Tenente Maabreh</h2>
+                    <h3>Comandante do 3º Pelotão</h3>
+                    <p>Líder excepcional e exemplo de dedicação, o Tenente Maabreh comanda com maestria o 3º Pelotão da RONDESP Recôncavo, sendo reconhecido por sua competência técnica, liderança inspiradora e compromisso inabalável com a segurança pública.</p>
+                    <p>Sob seu comando, o 3º Pelotão se tornou referência em excelência operacional, disciplina e resultados expressivos no combate ao crime organizado em toda a região do Recôncavo Baiano.</p>
+                    <p>Sua visão estratégica e capacidade de motivar a tropa fazem dele um dos oficiais mais respeitados da corporação, sendo peça fundamental nos resultados históricos alcançados pela RONDESP Recôncavo.</p>
+                    <div class="excellence-badge">
+                        ★ EXCELÊNCIA EM COMANDO TÁTICO ★
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-section">
+            <h3>MERCADO LIVRE 3º PELOTÃO</h3>
+            <p>Elite da RONDESP Recôncavo, o 3º Pelotão representa a excelência em operações táticas especializadas. Com dedicação absoluta e profissionalismo exemplar, esta equipe de guerreiros mantém a ordem e a paz nas ruas do Recôncavo, sendo reconhecida como a melhor unidade operacional da região.</p>
+        </div>
+
+        <div class="team-values">
+            <div class="value-card">
+                <h4>Força</h4>
+                <p>Determinação inabalável no cumprimento do dever</p>
+            </div>
+            <div class="value-card">
+                <h4>Honra</h4>
+                <p>Integridade em cada ação e decisão</p>
+            </div>
+            <div class="value-card">
+                <h4>União</h4>
+                <p>Irmandade que fortalece a missão</p>
+            </div>
+            <div class="value-card">
+                <h4>Coragem</h4>
+                <p>Bravura diante de qualquer desafio</p>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <h2>Guerreiros em Ação</h2>
+            
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="photo_2_2025-11-25_18-34-22.jpg" alt="Operação Tática">
+                    <div class="photo-caption">Treinamento operacional - Excelência em ação</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="photo_3_2025-11-25_18-34-22.jpg" alt="Operação Tática">
+                    <div class="photo-caption">Prontidão operacional - Sempre alertas</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="photo_4_2025-11-25_18-34-22.jpg" alt="Igreja Protegida">
+                    <div class="photo-caption">Proteção ao patrimônio e à comunidade</div>
+                </div>
+            </div>
+
+            <h2>Equipe de Elite</h2>
+            
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="photo_5_2025-11-25_18-34-22.jpg" alt="Igreja Protegida">
+                    <div class="photo-caption">Guardando a paz e a ordem</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="photo_6_2025-11-25_18-34-22.jpg" alt="Guerreiro RONDESP">
+                    <div class="photo-caption">Força e determinação</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="photo_7_2025-11-25_18-34-22.jpg" alt="Guerreiro RONDESP">
+                    <div class="photo-caption">Orgulho de servir</div>
+                </div>
+            </div>
+
+            <h2>Operações Noturnas e Treinamento</h2>
+            
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="photo_8_2025-11-25_18-34-22.jpg" alt="Patrulhamento Noturno">
+                    <div class="photo-caption">Vigilância 24 horas - Proteção constante</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="photo_9_2025-11-25_18-34-22.jpg" alt="Guerreiro RONDESP">
+                    <div class="photo-caption">A força do 3º Pelotão</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="photo_10_2025-11-25_18-34-22.jpg" alt="Entrada São Roque">
+                    <div class="photo-caption">Guardiões de São Roque</div>
+                </div>
+            </div>
+
+            <h2>Unidos Pela Missão</h2>
+            
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="photo_11_2025-11-25_18-34-22.jpg" alt="Equipe Tática">
+                    <div class="photo-caption">Força-tarefa em ação</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="photo_12_2025-11-25_18-34-22.jpg" alt="Patrulhamento">
+                    <div class="photo-caption">Presença ostensiva nas ruas</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="photo_13_2025-11-25_18-34-22.jpg" alt="Guerreiro RONDESP">
+                    <div class="photo-caption">Espírito guerreiro</div>
+                </div>
+            </div>
+
+            <h2>Tropa de Elite</h2>
+            
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="photo_14_2025-11-25_18-34-22.jpg" alt="Operação Tática">
+                    <div class="photo-caption">Operação conjunta - Integração total</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="photo_15_2025-11-25_18-34-22.jpg" alt="Sala de Aula">
+                    <div class="photo-caption">Capacitação contínua - Conhecimento é poder</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="photo_16_2025-11-25_18-34-22.jpg" alt="Guerreiro RONDESP">
+                    <div class="photo-caption">Dedicação e profissionalismo</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-section">
+            <h3>ORGULHO DO RECÔNCAVO</h3>
+            <p>O 3º Pelotão da RONDESP Recôncavo não é apenas uma unidade policial - é um símbolo de excelência, dedicação e compromisso com a segurança da população. Cada membro desta equipe carrega consigo a responsabilidade de proteger e servir, mantendo sempre os mais altos padrões de profissionalismo e ética.</p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">← Voltar ao Início</a>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>3º PELOTÃO - RONDESP RECÔNCAVO</strong></p>
+        <p>Honra, Glória e Tradição</p>
+        <p>"O MELHOR PELOTÃO DO RECÔNCAVO BAIANO"</p>
+    </footer>
+</body>
+</html>
